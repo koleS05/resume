@@ -136,7 +136,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
   <!-- STAGE 1: contact capture -->
   <main id="gate" class="gate">
     <h2>Leave your details to open my resume</h2>
-    <p class="lede">Takes ten seconds. I'll use it to follow up after the fair.</p>
+    <p class="lede">Takes ten seconds. I'll use it to follow up.</p>
 
     <form id="lead" autocomplete="on" novalidate>
       <div class="field">
@@ -276,9 +276,9 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
 
   // ---- EDIT THESE ----------------------------------------------------------
   var CONFIG = {
-    web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY", // free key from web3forms.com; safe to be public
-    github: https://github.com/koleS05,      // profile URL; leave "" to hide the button
-    linkedin: www.linkedin.com/in/kole-sutton-b04803247,                              // e.g. "https://www.linkedin.com/in/your-handle"; "" hides it
+    web3formsKey: "69b4895c-6164-47a6-9b3b-4852719c0f3a", // free key from web3forms.com; safe to be public
+    github: "https://github.com/koleS05",      // profile URL; leave "" to hide the button
+    linkedin: "https://www.linkedin.com/in/kole-sutton-b04803247",                              // e.g. "https://www.linkedin.com/in/your-handle"; "" hides it
     stack: ""                                  // e.g. "Python, SQLite"; "" hides the line
   };
   // --------------------------------------------------------------------------
@@ -290,7 +290,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
   // Optional links
   if (CONFIG.github) { $("gh").href = CONFIG.github; $("gh").hidden = false; }
   if (CONFIG.linkedin) { $("li").href = CONFIG.linkedin; $("li").hidden = false; }
-  if (CONFIG.stack) { $("stack").textContent = "Stack: " + CONFIG.stack; $("stack").hidden = false; }
+  if (CONFIG.stack && $("stack")) { $("stack").textContent = "Stack: " + CONFIG.stack; $("stack").hidden = false; }
 
   // View switching via hash, so #resume is also a shareable direct link
   function render() {
@@ -352,14 +352,16 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
     e.preventDefault();
     err.hidden = true;
 
-    var name = form.name.value.trim();
-    var email = form.email.value.trim();
-    var company = form.company.value.trim();
+    var nameEl = $("name"), emailEl = $("email"), companyEl = $("company");
+    var name = nameEl.value.trim();
+    var email = emailEl.value.trim();
+    var company = companyEl.value.trim();
 
-    if (!name) { showError("Enter your name, or use the skip link below."); form.name.focus(); return; }
-    if (!email || !form.email.checkValidity()) { showError("Enter a valid email address, or use the skip link below."); form.email.focus(); return; }
+    if (!name) { showError("Enter your name, or use the skip link below."); nameEl.focus(); return; }
+    if (!email || !emailEl.checkValidity()) { showError("Enter a valid email address, or use the skip link below."); emailEl.focus(); return; }
 
-    if (!form.botcheck.checked) { // bots tick the honeypot; skip sending for them
+    var trap = form.querySelector('input[name="botcheck"]');
+    if (!(trap && trap.checked)) { // bots tick the honeypot; skip sending for them
       var payload = buildPayload(name, email, company);
       post(payload).catch(function () { writeQueue(readQueue().concat([payload])); });
     }
@@ -388,7 +390,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
   });
 
-  if (CONFIG.web3formsKey === "69b4895c-6164-47a6-9b3b-4852719c0f3a") {
+  if (CONFIG.web3formsKey === "YOUR_WEB3FORMS_ACCESS_KEY") {
     console.warn("Set CONFIG.web3formsKey or form submissions will not reach you.");
   }
 })();
