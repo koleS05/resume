@@ -109,13 +109,33 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
   ul { margin: .45rem 0 0; padding-left: 1.1rem; }
   li { margin: .25rem 0; }
 
-  .project { background: var(--card); border-left: 6px solid var(--gold); padding: 1.1rem 1.1rem 1.2rem; }
-  .project h3 { margin: 0; font-size: 1.3rem; font-weight: 750; font-stretch: 110%; }
-  .project .what { margin: .2rem 0 .9rem; color: var(--slate); }
-  .stages { margin: 0; padding: 0; list-style: none; }
-  .stages li { margin: 0 0 .8rem; padding-left: 0; }
-  .stages strong { display: block; }
-  .shot { display: block; width: 100%; height: auto; margin: 1rem 0 0; border: 2px solid var(--ink); }
+  .project { background: var(--card); border-left: 6px solid var(--gold); padding: 1.25rem 1.1rem 1.3rem; }
+  .project h3 { margin: 0; font-size: 1.6rem; font-weight: 800; font-stretch: 115%; line-height: 1.1; }
+  .project .what { margin: .5rem 0 0; font-size: 1.05rem; }
+  .project h4 { margin: 1.5rem 0 .5rem; font-size: 1rem; font-weight: 700; }
+  .roadmap { list-style: none; margin: 0; padding: 0; }
+  .roadmap li { position: relative; margin: 0; padding: 0 0 1.1rem 2.7rem; }
+  .roadmap li::before { content: ""; position: absolute; left: .78rem; top: 1.75rem; bottom: .15rem; width: 2px; background: var(--rule); }
+  .roadmap li:last-child { padding-bottom: 0; }
+  .roadmap li:last-child::before { display: none; }
+  .dot {
+    position: absolute; left: 0; top: .05rem; width: 1.75rem; height: 1.75rem;
+    display: grid; place-items: center; border-radius: 50%;
+    border: 2px solid var(--ink); background: var(--card);
+    font-size: .85rem; font-weight: 800;
+  }
+  .roadmap li.done .dot { background: var(--gold); }
+  .roadmap li.now .dot { background: var(--ink); color: #fff; }
+  .stage-head { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; }
+  .stage-head strong { font-size: 1.02rem; }
+  .tag { padding: .05rem .55rem; border: 2px solid var(--ink); border-radius: 999px; font-size: .78rem; font-weight: 700; background: var(--card); }
+  .done .tag { background: var(--gold); }
+  .now .tag { background: var(--ink); color: #fff; }
+  .roadmap p { margin: .15rem 0 0; }
+  .fig { margin: 1.25rem 0 0; }
+  .shot { display: block; width: 100%; height: auto; margin: 0; border: 2px solid var(--ink); }
+  .fig .note { margin: .5rem 0 0; }
+  .roadmap p + p { margin-top: .5rem; }
   .note { margin: .9rem 0 0; font-size: .92rem; color: var(--slate); }
 
   dl.skills { margin: 0; display: grid; gap: .7rem 1.25rem; }
@@ -131,6 +151,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
   <header class="hero">
     <h1>Kole<br>Sutton</h1>
     <p>Information Technology student at UCF, graduating May 2027. Focused on Cybersecurity.</p>
+    <p>Currently building TradeHQ, a multi-stage market-monitoring system.</p>
   </header>
 
   <!-- STAGE 1: contact capture -->
@@ -172,6 +193,62 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
     </div>
     <p class="where">ko802876@ucf.edu, Orlando, Florida</p>
 
+    <section aria-labelledby="h-proj">
+      <h2 class="sec" id="h-proj">Featured project</h2>
+      <article class="project">
+        <h3>TradeHQ</h3>
+        <p class="what">A Python system that automates my crypto buying, paper-trades Kalshi's 15-minute markets against its own statistical model, and sends alerts to my phone. I'm building it in five stages. Two are complete and a third is in progress.</p>
+        <p class="note" id="stack" hidden></p>
+
+        <figure class="fig">
+          <img class="shot" src="assets/tradehq.png" alt="TradeHQ live dashboard showing a price comparison chart, correlation matrix, top movers and 16 Kalshi 15-minute markets" loading="lazy" onerror="this.closest('figure').remove()">
+          <figcaption class="note">The TradeHQ live dashboard: rebased price comparison, correlation matrix, top movers, and the 16 Kalshi 15-minute markets.</figcaption>
+        </figure>
+
+        <h4>The five stages</h4>
+        <ol class="roadmap">
+          <li class="done">
+            <span class="dot" aria-hidden="true">1</span>
+            <div class="stage-head"><strong>Automated accumulation</strong><span class="tag">Complete</span></div>
+            <p>Live Coinbase dollar-cost-averaging buys with cost-basis and P&amp;L tracking, built around a core-plus-tactical model. It shows how my holdings compound over time.</p>
+          </li>
+          <li class="done">
+            <span class="dot" aria-hidden="true">2</span>
+            <div class="stage-head"><strong>Kalshi paper-trading engine</strong><span class="tag">Complete</span></div>
+            <p>Computes its own fair probability for each of 16 Kalshi 15-minute markets and trades only the gap between that and the market price. Volatility comes from 1-minute candles, aligned to the :00, :15, :30 and :45 settlement windows.</p>
+            <p>It has to pass a statistical go-live gate before any real money is used: bootstrap confidence intervals on expected value, and beating a random-entry placebo. A separate auditor recomputes profit and loss to the cent.</p>
+          </li>
+          <li class="now">
+            <span class="dot" aria-hidden="true">3</span>
+            <div class="stage-head"><strong>Perpetuals paper trading</strong><span class="tag">In progress</span></div>
+            <p>Paper-trades perpetual futures with simulated money only, so strategies get tested before any real capital is involved.</p>
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true">4</span>
+            <div class="stage-head"><strong>Solana alert scanner</strong><span class="tag">Planned</span></div>
+            <p>Scans new Solana tokens using DexScreener and FOMO data and sends a phone alert when one matches my criteria. Alert-only: it never trades for me.</p>
+          </li>
+          <li>
+            <span class="dot" aria-hidden="true">5</span>
+            <div class="stage-head"><strong>Security hardening</strong><span class="tag">Planned</span></div>
+            <p>Some of it already exists: secret scanning and dependency audits in CI, a single risk layer every order must pass through, a kill switch, and a dashboard bound to localhost. The final stage is a full red-team of my own system: attack it, fix what breaks, and document the results as a cybersecurity case study.</p>
+          </li>
+        </ol>
+
+        <h4>How it fits together</h4>
+        <p>Three Docker Compose services (trading engine, dashboard, live terminal) run on an always-on desktop. A Streamlit dashboard and a read-only live terminal show the data, phone alerts arrive through ntfy, and remote access goes through Tailscale. Data is stored in SQLite with encrypted nightly backups that are restore-tested before they're kept.</p>
+
+        <h4>What it shows</h4>
+        <ul>
+          <li>Statistical validation before real money: confidence intervals, a placebo test, and an independent P&amp;L auditor.</li>
+          <li>A risk layer every order must pass through, backed by a kill switch and branch-coverage tests.</li>
+          <li>Test and security tooling: pytest, Hypothesis property tests, Playwright, gitleaks, pip-audit, and hash-pinned dependencies.</li>
+          <li>Live REST and WebSocket integration with Coinbase and Kalshi.</li>
+        </ul>
+        <p class="note">The repository is private. A public showcase version is planned, and I'm happy to walk through the code.</p>
+      </article>
+    </section>
+
     <section aria-labelledby="h-edu">
       <h2 class="sec" id="h-edu">Education</h2>
       <div class="entry">
@@ -182,21 +259,18 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
         <div>Bachelor of Science in Information Technology</div>
         <div class="meta">Expected graduation: May 2027</div>
       </div>
-    </section>
-
-    <section aria-labelledby="h-proj">
-      <h2 class="sec" id="h-proj">Project</h2>
-      <article class="project">
-        <h3>TradeHQ</h3>
-        <p class="what">A personal cryptocurrency market-monitoring system I'm building in stages. Stages 1 and 2 are complete. Stage 3 is in progress.</p>
-        <ol class="stages">
-          <li><strong>Stage 1: Holdings indicator</strong>Tracks overall asset holdings and shows how they compound over time.</li>
-          <li><strong>Stage 2: Kalshi scanner</strong>Scans Kalshi's 15-minute crypto prediction markets in real time, aligned to the fixed settlement windows.</li>
-        </ol>
-        <p class="note" id="stack" hidden></p>
-        <img class="shot" src="assets/tradehq.png" alt="TradeHQ dashboard screenshot" loading="lazy" onerror="this.remove()">
-        <p class="note">The repository is private. I'm happy to walk through the code. A security-hardening pass and a self red-team of the system are planned once the build is finished.</p>
-      </article>
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Wellington High School</h3>
+          <span class="meta">2019 - 2023</span>
+        </div>
+        <div class="meta">Wellington, Florida</div>
+        <ul>
+          <li>Cybersecurity program from sophomore through senior year, starting in the first year it was offered. Earned a 4.0 throughout the program.</li>
+          <li>DECA Marketing and Business program all four years.</li>
+          <li>Co-founded the school's car club in senior year.</li>
+        </ul>
+      </div>
     </section>
 
     <section aria-labelledby="h-exp">
@@ -260,7 +334,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
     <section aria-labelledby="h-awards">
       <h2 class="sec" id="h-awards">Awards</h2>
       <ul>
-        <li>Palm Beach County Technical Student of the Year (2023)</li>
+        <li>Palm Beach County Career and Technical Student of the Year (2023)</li>
         <li>International DECA qualifier and three-time Florida State DECA qualifier in Entrepreneurship</li>
         <li>Cambridge AICE Diploma</li>
         <li>2nd degree black belt in Chito Ryu Karate after more than 6 years of training</li>
@@ -279,7 +353,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
     web3formsKey: "69b4895c-6164-47a6-9b3b-4852719c0f3a", // free key from web3forms.com; safe to be public
     github: "https://github.com/koleS05",      // profile URL; leave "" to hide the button
     linkedin: "https://www.linkedin.com/in/kole-sutton-b04803247",                              // e.g. "https://www.linkedin.com/in/your-handle"; "" hides it
-    stack: ""                                  // e.g. "Python, SQLite"; "" hides the line
+    stack: "Python 3.12, FastAPI, WebSockets, Streamlit, SQLite, NumPy, Pydantic, Docker Compose, GitHub Actions, pytest, Hypothesis, Playwright, Coinbase and Kalshi APIs"                                  // e.g. "Python, SQLite"; "" hides the line
   };
   // --------------------------------------------------------------------------
 
