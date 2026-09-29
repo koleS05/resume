@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kole Sutton | IT student, UCF</title>
+<meta name="description" content="Kole Sutton: Information Technology student at UCF (May 2027), focused on cybersecurity. Resume and projects.">
+<meta property="og:title" content="Kole Sutton | IT student, UCF">
+<meta property="og:description" content="Information Technology student at UCF, focused on cybersecurity. Resume and projects.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FFC904">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F5F7;
+    --card: #FFFFFF;
+    --ink: #11141A;
+    --gold: #FFC904;
+    --slate: #525C69;
+    --rule: #D3D8DF;
+    --focus: #0B57D0;
+    --sans: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1rem/1.55 var(--sans);
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* Layout: gold name block + one content column */
+.shell { min-height: 100vh; }
+.hero { background: var(--gold); padding: 2rem 1.25rem 1.75rem; }
+.hero h1 {
+  margin: 0 0 0 -.05em;
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: clamp(3rem, 16vw, 5.5rem);
+  line-height: .92;
+  letter-spacing: -.02em;
+}
+.hero p { margin: 1rem 0 0; max-width: 36ch; font-weight: 500; font-size: 1.05rem; }
+main { padding: 1.75rem 1.25rem 3.5rem; }
+main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
+
+@media (min-width: 900px) {
+  .shell { display: grid; grid-template-columns: clamp(22rem, 32vw, 30rem) minmax(0, 1fr); }
+  .hero { position: sticky; top: 0; height: 100vh; padding: 3.5rem 3rem; }
+  main { padding: 3.5rem 3rem 5rem; }
+}
+
+  /* Gate */
+  .gate h2 { margin: 0 0 .5rem; font-size: 1.6rem; font-weight: 750; font-stretch: 110%; line-height: 1.15; }
+  .gate .lede { margin: 0 0 1.5rem; color: var(--slate); max-width: 40ch; }
+  .field { margin-bottom: 1rem; }
+  label { display: block; margin-bottom: .3rem; font-weight: 650; font-size: .95rem; }
+  .opt { font-weight: 400; color: var(--slate); }
+  input[type=text], input[type=email] {
+    width: 100%; height: 3.1rem; padding: 0 .85rem;
+    font: inherit; font-size: 1rem; /* 16px stops iOS zoom */
+    color: var(--ink); background: var(--card);
+    border: 2px solid var(--ink); border-radius: 4px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 3.1rem; padding: 0 1.25rem;
+    font: 700 1rem var(--sans); text-decoration: none; cursor: pointer;
+    border: 2px solid var(--ink); border-radius: 4px;
+    background: var(--card); color: var(--ink);
+  }
+  .btn.primary { background: var(--ink); color: #fff; }
+  .btn.block { width: 100%; }
+  .btn:disabled { opacity: .6; cursor: progress; }
+  .skip {
+    display: block; margin: 1rem auto 0; padding: .6rem .5rem;
+    background: none; border: 0; font: 500 1rem var(--sans);
+    color: var(--slate); text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+  }
+  .fine { margin: 1.25rem 0 0; font-size: .85rem; color: var(--slate); }
+  .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  /* Resume view */
+  #resume { animation: in .3s ease-out; }
+  @keyframes in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { #resume { animation: none; } }
+
+  .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: .5rem; }
+  .actions .btn { min-height: 2.75rem; padding: 0 1rem; font-size: .95rem; }
+  .where { margin: 0 0 .25rem; color: var(--slate); }
+
+  section { margin-top: 2.25rem; }
+  h2.sec {
+    margin: 0 0 .9rem; padding-bottom: .45rem;
+    font-size: 1.2rem; font-weight: 750; font-stretch: 112%;
+    border-bottom: 2px solid var(--ink);
+  }
+  .entry { margin: 0 0 1.4rem; }
+  .entry-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem 1rem; }
+  .entry h3 { margin: 0; font-size: 1.05rem; font-weight: 700; }
+  .meta { color: var(--slate); font-size: .92rem; }
+  ul { margin: .45rem 0 0; padding-left: 1.1rem; }
+  li { margin: .25rem 0; }
+
+  .project { background: var(--card); border-left: 6px solid var(--gold); padding: 1.1rem 1.1rem 1.2rem; }
+  .project h3 { margin: 0; font-size: 1.3rem; font-weight: 750; font-stretch: 110%; }
+  .project .what { margin: .2rem 0 .9rem; color: var(--slate); }
+  .stages { margin: 0; padding: 0; list-style: none; }
+  .stages li { margin: 0 0 .8rem; padding-left: 0; }
+  .stages strong { display: block; }
+  .shot { display: block; width: 100%; height: auto; margin: 1rem 0 0; border: 2px solid var(--ink); }
+  .note { margin: .9rem 0 0; font-size: .92rem; color: var(--slate); }
+
+  dl.skills { margin: 0; display: grid; gap: .7rem 1.25rem; }
+  dl.skills div { display: grid; gap: .1rem; }
+  dt { color: var(--slate); font-size: .92rem; }
+  dd { margin: 0; font-weight: 500; }
+  @media (min-width: 520px) { dl.skills div { grid-template-columns: 9.5rem 1fr; gap: 1rem; } }
+</style>
+</head>
+<body data-view="gate">
+<div class="shell">
+
+  <header class="hero">
+    <h1>Kole<br>Sutton</h1>
+    <p>Information Technology student at UCF, graduating May 2027. Focused on Cybersecurity.</p>
+  </header>
+
+  <!-- STAGE 1: contact capture -->
+  <main id="gate" class="gate">
+    <h2>Leave your details to open my resume</h2>
+    <p class="lede">Takes ten seconds. I'll use it to follow up after the fair.</p>
+
+    <form id="lead" autocomplete="on" novalidate>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="company">Company and role <span class="opt">(optional)</span></label>
+        <input id="company" name="company" type="text" autocomplete="organization">
+      </div>
+      <!-- honeypot: real people never see or tick this -->
+      <div class="trap" aria-hidden="true">
+        <label>Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <button class="btn primary block" id="submit" type="submit">Open resume</button>
+      <button class="skip" id="skip" type="button">Skip and view resume</button>
+      <p class="fine" id="err" role="alert" hidden></p>
+    </form>
+    <p class="fine">Your details go only to me. I don't share or sell them.</p>
+  </main>
+
+  <!-- STAGE 2: resume -->
+  <main id="resume" hidden>
+    <div class="actions">
+      <a class="btn primary" href="mailto:ko802876@ucf.edu">Email me</a>
+      <button class="btn" id="vcf" type="button">Save contact</button>
+      <a class="btn" id="gh" href="#" hidden>GitHub</a>
+      <a class="btn" id="li" href="#" hidden>LinkedIn</a>
+    </div>
+    <p class="where">ko802876@ucf.edu, Orlando, Florida</p>
+
+    <section aria-labelledby="h-edu">
+      <h2 class="sec" id="h-edu">Education</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <h3>University of Central Florida</h3>
+          <span class="meta">Aug 2023 - Present</span>
+        </div>
+        <div>Bachelor of Science in Information Technology</div>
+        <div class="meta">Expected graduation: May 2027</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-proj">
+      <h2 class="sec" id="h-proj">Project</h2>
+      <article class="project">
+        <h3>TradeHQ</h3>
+        <p class="what">A personal cryptocurrency market-monitoring system I'm building in stages. Stages 1 and 2 are complete. Stage 3 is in progress.</p>
+        <ol class="stages">
+          <li><strong>Stage 1: Holdings indicator</strong>Tracks overall asset holdings and shows how they compound over time.</li>
+          <li><strong>Stage 2: Kalshi scanner</strong>Scans Kalshi's 15-minute crypto prediction markets in real time, aligned to the fixed settlement windows.</li>
+        </ol>
+        <p class="note" id="stack" hidden></p>
+        <img class="shot" src="assets/tradehq.png" alt="TradeHQ dashboard screenshot" loading="lazy" onerror="this.remove()">
+        <p class="note">The repository is private. I'm happy to walk through the code. A security-hardening pass and a self red-team of the system are planned once the build is finished.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="h-exp">
+      <h2 class="sec" id="h-exp">Experience</h2>
+
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Cafe-Boutique Piano, FOH Employee</h3>
+          <span class="meta">May 2025 to present</span>
+        </div>
+        <div class="meta">Winter Park, Florida</div>
+        <ul>
+          <li>Manage guest reservations and seating arrangements for parties of varying sizes in a fast-paced fine dining environment.</li>
+          <li>Operate Clover POS systems to process transactions and accurately track table activity.</li>
+          <li>Provide detailed food, beverage, and wine recommendations based on guest preferences.</li>
+          <li>Assist with inventory tracking, opening procedures, closing duties, and daily operational support.</li>
+          <li>Resolve guest concerns professionally while maintaining exceptional customer service standards.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <h3>PA BBQ, Server</h3>
+          <span class="meta">Mar 2023 to Aug 2024</span>
+        </div>
+        <div class="meta">Wellington, Florida</div>
+        <ul>
+          <li>Delivered attentive customer service by greeting guests, taking orders, and ensuring positive dining experiences.</li>
+          <li>Managed payment processing and resolved customer concerns in a professional manner.</li>
+          <li>Coordinated with kitchen staff to ensure accurate and timely order delivery.</li>
+          <li>Maintained cleanliness and organization throughout dining areas.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Wellington King Enterprises, Construction Laborer / Equipment Operator</h3>
+          <span class="meta">May 2021 to Aug 2021</span>
+        </div>
+        <div class="meta">Punta Gorda, Florida</div>
+        <ul>
+          <li>Operated equipment and assisted with site preparation activities on active construction projects.</li>
+          <li>Transported materials and hauled dirt while adhering to safety procedures.</li>
+          <li>Collaborated with team members to complete assigned tasks efficiently and on schedule.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-skills">
+      <h2 class="sec" id="h-skills">Skills and certifications</h2>
+      <dl class="skills">
+        <div><dt>Security and IT</dt><dd>SIEM concepts, IAM / AD fundamentals, NIST / security frameworks, PowerShell</dd></div>
+        <div><dt>Languages</dt><dd>Java, C, Python, JavaScript, C++, HTML</dd></div>
+        <div><dt>Operating systems</dt><dd>Windows 10/11, Linux</dd></div>
+        <div><dt>Networking</dt><dd>Basic Cisco networking concepts, TCP/IP fundamentals</dd></div>
+        <div><dt>Software</dt><dd>Microsoft Office Suite, AWS Cloud, Clover POS</dd></div>
+        <div><dt>Certifications</dt><dd>Microsoft Technology Associate (MTA): IT Fundamentals; MTA: Windows Operating System Fundamentals</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="h-awards">
+      <h2 class="sec" id="h-awards">Awards</h2>
+      <ul>
+        <li>Palm Beach County Technical Student of the Year (2023)</li>
+        <li>International DECA qualifier and three-time Florida State DECA qualifier in Entrepreneurship</li>
+        <li>Cambridge AICE Diploma</li>
+        <li>2nd degree black belt in Chito Ryu Karate after more than 6 years of training</li>
+      </ul>
+    </section>
+  </main>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---- EDIT THESE ----------------------------------------------------------
+  var CONFIG = {
+    web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY", // free key from web3forms.com; safe to be public
+    github: https://github.com/koleS05,      // profile URL; leave "" to hide the button
+    linkedin: www.linkedin.com/in/kole-sutton-b04803247,                              // e.g. "https://www.linkedin.com/in/your-handle"; "" hides it
+    stack: ""                                  // e.g. "Python, SQLite"; "" hides the line
+  };
+  // --------------------------------------------------------------------------
+
+  var $ = function (id) { return document.getElementById(id); };
+  var gate = $("gate"), resume = $("resume"), form = $("lead");
+  var QUEUE_KEY = "pendingLeads";
+
+  // Optional links
+  if (CONFIG.github) { $("gh").href = CONFIG.github; $("gh").hidden = false; }
+  if (CONFIG.linkedin) { $("li").href = CONFIG.linkedin; $("li").hidden = false; }
+  if (CONFIG.stack) { $("stack").textContent = "Stack: " + CONFIG.stack; $("stack").hidden = false; }
+
+  // View switching via hash, so #resume is also a shareable direct link
+  function render() {
+    var showResume = location.hash === "#resume";
+    gate.hidden = showResume;
+    resume.hidden = !showResume;
+    document.body.dataset.view = showResume ? "resume" : "gate";
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener("hashchange", render);
+  render();
+
+  // ---- Submission with offline queue (venue wifi is unreliable) ------------
+  function readQueue() {
+    try { return JSON.parse(localStorage.getItem(QUEUE_KEY) || "[]"); } catch (e) { return []; }
+  }
+  function writeQueue(q) {
+    try { localStorage.setItem(QUEUE_KEY, JSON.stringify(q)); } catch (e) { /* storage blocked: skip */ }
+  }
+  function post(payload) {
+    return fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j.success) { throw new Error(j.message || "rejected"); }
+    });
+  }
+  function flush() {
+    var q = readQueue();
+    if (!q.length) { return; }
+    writeQueue([]);
+    q.forEach(function (p) {
+      post(p).catch(function () { writeQueue(readQueue().concat([p])); });
+    });
+  }
+  window.addEventListener("online", flush);
+  flush();
+
+  function buildPayload(name, email, company) {
+    return {
+      access_key: CONFIG.web3formsKey,
+      subject: "Job fair contact: " + name + (company ? " (" + company + ")" : ""),
+      from_name: "Resume QR page",
+      name: name,
+      email: email,
+      company: company || "(not given)",
+      source: "UCF CSE job fair 2026",
+      submitted_at: new Date().toISOString(),
+      botcheck: ""
+    };
+  }
+
+  var err = $("err");
+  function showError(msg) { err.textContent = msg; err.hidden = false; }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    err.hidden = true;
+
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    var company = form.company.value.trim();
+
+    if (!name) { showError("Enter your name, or use the skip link below."); form.name.focus(); return; }
+    if (!email || !form.email.checkValidity()) { showError("Enter a valid email address, or use the skip link below."); form.email.focus(); return; }
+
+    if (!form.botcheck.checked) { // bots tick the honeypot; skip sending for them
+      var payload = buildPayload(name, email, company);
+      post(payload).catch(function () { writeQueue(readQueue().concat([payload])); });
+    }
+    location.hash = "#resume"; // open resume immediately; sending continues in background
+  });
+
+  $("skip").addEventListener("click", function () { location.hash = "#resume"; });
+
+  // ---- Save contact (vCard) ------------------------------------------------
+  $("vcf").addEventListener("click", function () {
+    var lines = [
+      "BEGIN:VCARD", "VERSION:3.0",
+      "N:Sutton;Kole;;;", "FN:Kole Sutton",
+      "EMAIL;TYPE=INTERNET:ko802876@ucf.edu",
+      "TITLE:Information Technology student, UCF"
+    ];
+    if (CONFIG.github) { lines.push("URL:" + CONFIG.github); }
+    lines.push("NOTE:Met at the UCF CSE job fair 2026", "END:VCARD");
+    var blob = new Blob([lines.join("\r\n")], { type: "text/vcard" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "Kole_Sutton.vcf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  if (CONFIG.web3formsKey === "69b4895c-6164-47a6-9b3b-4852719c0f3a") {
+    console.warn("Set CONFIG.web3formsKey or form submissions will not reach you.");
+  }
+})();
+</script>
+</body>
+</html>
