@@ -92,6 +92,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
   @keyframes in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
   @media (prefers-reduced-motion: reduce) { #resume { animation: none; } }
 
+  .mission { margin: 0 0 1.5rem; padding-left: 1rem; border-left: 6px solid var(--gold); max-width: 42ch; font-size: 1.15rem; font-weight: 500; line-height: 1.45; }
   .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: .5rem; }
   .actions .btn { min-height: 2.75rem; padding: 0 1rem; font-size: .95rem; }
   .where { margin: 0 0 .25rem; color: var(--slate); }
@@ -185,8 +186,11 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
 
   <!-- STAGE 2: resume -->
   <main id="resume" hidden>
+    <p class="mission">I'm an IT student building toward a career in cybersecurity. I learn by building real systems, testing them until they hold up, and then attacking them to see what breaks. I'm looking for an internship or entry-level role where I can keep doing that.</p>
+
     <div class="actions">
-      <a class="btn primary" href="mailto:ko802876@ucf.edu">Email me</a>
+      <a class="btn primary" href="Kole_Sutton_Resume.pdf" target="_blank" rel="noopener">Traditional resume (PDF)</a>
+      <a class="btn" href="mailto:ko802876@ucf.edu">Email me</a>
       <button class="btn" id="vcf" type="button">Save contact</button>
       <a class="btn" id="gh" href="#" hidden>GitHub</a>
       <a class="btn" id="li" href="#" hidden>LinkedIn</a>
@@ -258,6 +262,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
         </div>
         <div>Bachelor of Science in Information Technology</div>
         <div class="meta">Expected graduation: May 2027</div>
+        <div class="meta">Cumulative GPA: 3.054 (before Fall 2026 grades)</div>
       </div>
       <div class="entry">
         <div class="entry-head">
@@ -266,8 +271,9 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
         </div>
         <div class="meta">Wellington, Florida</div>
         <ul>
-          <li>Cybersecurity program from sophomore through senior year, starting in the first year it was offered. Earned a 4.0 throughout the program.</li>
+          <li>Cybersecurity program all four years. Earned a 4.0 throughout the program.</li>
           <li>DECA Marketing and Business program all four years.</li>
+          <li>Member of the National Honor Society and the National Society of High School Scholars (NSHSS).</li>
           <li>Co-founded the school's car club in senior year.</li>
         </ul>
       </div>
@@ -323,7 +329,7 @@ main > * { max-width: 46rem; margin-left: auto; margin-right: auto; }
       <h2 class="sec" id="h-skills">Skills and certifications</h2>
       <dl class="skills">
         <div><dt>Security and IT</dt><dd>SIEM concepts, IAM / AD fundamentals, NIST / security frameworks, PowerShell</dd></div>
-        <div><dt>Languages</dt><dd>Java, C, Python, JavaScript, C++, HTML</dd></div>
+        <div><dt>Coding languages</dt><dd>Java, C, Python, JavaScript, C++, SQL, HTML and CSS (web pages)</dd></div>
         <div><dt>Operating systems</dt><dd>Windows 10/11, Linux</dd></div>
         <div><dt>Networking</dt><dd>Basic Cisco networking concepts, TCP/IP fundamentals</dd></div>
         <div><dt>Software</dt><dd>Microsoft Office Suite, AWS Cloud, Clover POS</dd></div>
